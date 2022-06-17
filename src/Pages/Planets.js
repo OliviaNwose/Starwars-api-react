@@ -5,39 +5,39 @@ import { useEffect, useState } from 'react';
 import Container from 'react-bootstrap/esm/Container';
 
 
-export default function People (){  
-    const [people, setPeople] = useState([]);
+export default function Planets (){  
+    const [planets, setPlanets] = useState([]);
     useEffect(() => {
-       const getPeople = async () => {
-         const response = await fetch("https://swapi.dev/api/people");
+       const getPlanets = async () => {
+         const response = await fetch("https://swapi.dev/api/planets");
          const responseJson = await response.json();
 
-         setPeople(responseJson.results);
+         setPlanets(responseJson.results);
        };
-       getPeople();
+       getPlanets();
     }, [])
     return(
     <Container>
-    <h3>Starwars People</h3>    
+    <h6>Starwars Planets and feautures</h6>    
     <Table>
       <thead>
         <tr>
           <th>#</th>
           <th>Name</th>
-          <th>Height</th>
-          <th>Hair color</th>
+          <th>Diameter</th>
+          <th>Climate</th>
           <th></th>
         </tr>
       </thead>
       <tbody>
-        {people.map((person, index)=>(
+        {planets.map((planet, index)=>(
                     <tr key={index}>
                     <th scope="row">{index + 1}</th>
-                    <td>{person.name}</td>
-                    <td>{person.height}</td>
-                    <td>{person.hair_color}</td>
+                    <td>{planet.name}</td>
+                    <td>{planet.diameter}</td>
+                    <td>{planet.climate}</td>
                     <td>
-                      <Link to={ `/People/ ${ index + 1}`}>Details</Link>
+                      <Link to={ `/Things/Planets/ ${ index + 1}`}>Details</Link>
                     </td>
                   </tr>
         ))}
